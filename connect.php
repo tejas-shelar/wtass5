@@ -6,7 +6,7 @@ $age = $_POST['age'];
 $mno = $_POST['mobile'];
 
 
-$conn = new mysqli('localhost','root','','assignment 5');
+$conn = new mysqli('localhost','root','','assignment5');
 if($conn->connect_error){
     die('connection failed :'.$conn->connect_error);
 }
@@ -21,7 +21,7 @@ else{
     $conn->close();
 }
 
-$connect = new mysqli('localhost','root','','assignment 5');
+$connect = new mysqli('localhost','root','','assignment5');
 $sql = "SELECT * from registrants";
 $output = mysqli_query($connect,$sql);
 $json_array = array();
