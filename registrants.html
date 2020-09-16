@@ -3,10 +3,11 @@
         <title>
             Registrants
         </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
              *{
 	        box-sizing: box-border;
-	        font-family:century gothic;
+	        font-family:berlin sans fb;
             }
             .total{
             background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(sunburn.jpg);
@@ -85,17 +86,44 @@
                 color: black;
             }
             .menu a{
-                color:blue;
+                color:rgb(15, 172, 219);
                 text-decoration: none;
             }
+            .menu{
+                margin-top: 20px;;
+            }
+            .tab3 table{
+                color:white;
+            }
+            .tab3{
+               
+               font-family:FOOTLIGHT MT LIGHT;
+               font-size:1.2vw;
+               border:collapse;
+               border:1px solid black;
+               color:lightgreen;
+           }
+           .tab3 tr{
+             border:1px solid black;
+             padding:2px;
+             
+           }
+           .tab3 td{
+             border:1px solid black;
+             padding:2px;
+             
+           }
+           .tab3 th{
+             border:1px solid black;
+             padding:2px;
+             
+           }
         </style>
     </head>
     <body>
         <div class = "total">
             <div class="head">
-                <div class="logo">
-                    
-                </div>
+               
                 <div class="title">
                     SUNBURN EVENT 2020
                 </div>
@@ -112,7 +140,48 @@
                     </div>
             </div>
             <div class="tab3">
+                <table name="table" id="t1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Email Id</th>
+                        <th>Age</th>
+                        <th>Mobile No.</th>
+                        
+                    </tr>
+                </table>
             </div>
         </div>
+        <script>
+            $(document).ready(function()
+                {
+                    $.getJSON('data.json',function(data){
+                        var registrant = '';
+
+                        $.each(data, function(key,value){
+                            registrant +='<tr>';
+                            registrant +='<td>'+
+                                value.name + '<td>';
+                            registrant +='<td>'+
+                                value.gender + '<td>';
+                            registrant +='<td>'+
+                                value.email + '<td>';
+                            registrant +='<td>'+
+                                value.age + '<td>';
+                            registrant +='<td>'+
+                                value.mobile + '<td>';
+                            registrant +='<td>'+
+                                value.area + '<td>';
+
+                                registrant +='<tr>';
+                        });
+
+                        $('#t1').append(registrant);
+
+                    });
+                });
+
+                
+        </script>
         </body>
 </html>
